@@ -1,0 +1,5 @@
+$NetBSD$
+
+SHA1 (frama-c-Oxygen-20120901.tar.gz) = 65aef0a88b788d11a6b5061dc08741492859de40
+Size (frama-c-Oxygen-20120901.tar.gz) = 10815011 bytes
+SHA1 (patch-aa-Makefile-win-path) = eec047799a3e9e04a02b8c4e4a6eba900f9cdb8c

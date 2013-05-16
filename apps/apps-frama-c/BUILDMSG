@@ -1,0 +1,30 @@
+IMPORTANT NOTES:
+- As of release Beryllium 20090902, jessie plugin is included in Why
+distribution. Why itself is not installable from apps-frama-c anymore, only
+through apps-why.
+
+- In order to build Frama-C's GUI, godi-lablgtk2 must have been
+compiled with gtksourceview support. Please ensure that gtksourceview
+and its header files are installed on your system. If this is not the
+case, install them and ask godi to rebuild godi-lablgtk2 (if
+godi-lablgtk2 hasn't been built yet, you only need to ensure that
+gtksourceview is correctly installed, godi will take care of the
+rest).
+
+Available options:
+
+- CONF_FRAMAC_API_DOC: installs the kernel api documentation under
+                      share/frama-c/doc (defaults: no)
+
+- CONF_FRAMAC_ENABLE_GUI: enables the gui plugin.
+Can be set to yes, no or auto (default: auto).
+- yes will force the gui to be compiled and fails if this can not be done
+- no will disable the gui altogether
+- auto forces a dependency on godi-lablgtk2, but won't complain is support
+  for gtksourceview2 is missing, just disabling the gui.
+
+- CONF_FRAMAC_ACSL_EL: installs acsl.el into share/emacs/site-lisp 
+     (yes/no option, default: yes)
+
+- CONF_FRAMAC_START_SHORTCUT: on wodi distribution, adds a shortcut in the
+  windows start menu (yes/no option, default: yes)

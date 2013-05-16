@@ -1,0 +1,13 @@
+Frama-C stands for FRAmework for Modular Analysis of C. It provides a generic
+framework (based on the CIL library) for building static analyzers for
+C programs. It features an annotation language, called ACSL, in which
+it is possible possible to express the formal properties that the code under
+analysis is expected to meet.
+Current analyzers include:
+- an abstract interpreter
+- a code slicer
+- an impact analysis tool
+
+IMPORTANT NOTE for user upgrading from a previous version:
+Starting from  Frama-C Beryllium 20090902 and why 2.21, Jessie plug-in is 
+now provided directly by apps-why. There is no local why installation anymore.

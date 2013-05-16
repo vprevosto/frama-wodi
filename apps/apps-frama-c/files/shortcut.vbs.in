@@ -1,0 +1,11 @@
+Set oWS = WScript.CreateObject("WScript.Shell")
+sStartMenuPath = oWS.SpecialFolders("StartMenu")
+sLinkFile = sStartMenuPath & "\programs\frama-c.lnk"
+Set oLink = oWS.CreateShortcut(sLinkFile)
+oLink.TargetPath = "@TARGET_PATH@"
+oLink.Description = "Frama-C Graphical User Interface"
+oLink.IconLocation = "@ICON_LOCATION@"
+oLink.Save
+Set FSobj = WScript.CreateObject("Scripting.FileSystemObject")
+Set plistFile = FSobj.createTextFile("@TMP_FILE@",8)
+plistFile.writeLine(sLinkFile)

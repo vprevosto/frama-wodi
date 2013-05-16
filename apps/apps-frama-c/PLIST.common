@@ -1,0 +1,13 @@
+bin/frama-c
+bin/frama-c.byte
+bin/ptests.byte
+@optional bin/frama-c-gui
+@optional bin/frama-c-gui.byte
+@deepdir share/frama-c
+@deepdir lib/frama-c
+
+@optional share/emacs/site-lisp/acsl.el
+
+share/man/man1/frama-c-gui.1
+share/man/man1/frama-c.1
+
