@@ -1,0 +1,49 @@
+--- configure	2012-12-22 11:06:16.000000000 +0100
++++ configure.new	2013-03-27 08:53:40.865193900 +0100
+@@ -623,7 +623,7 @@
+ else
+     case $lablgtkdir_spec in
+ 	no)
+-            if lablgtkdirtmp=$(ocamlfind query lablgtk2 2> /dev/null); then
++            if lablgtkdirtmp=$(ocamlfind query lablgtk2 | tr -d '\r\n' 2> /dev/null); then
+                 if [ -f "$lablgtkdirtmp/glib.cmi" -a -f "$lablgtkdirtmp/glib.mli" ]; then
+                     lablgtkdirfoundmsg="LabelGtk2 found by ocamlfind"
+                     lablgtkdir=$lablgtkdirtmp
+@@ -775,7 +775,7 @@
+     */yes/*)
+         libdir_spec=yes
+         case $ARCH in
+-          win32) LIBDIR=$prefix ;;
++          win32) LIBDIR=$(mk_win_path $prefix/lib/coq) ;;
+           *)  LIBDIR=$prefix/lib/coq ;;
+         esac ;;
+     */*/true) LIBDIR=$COQTOP ;;
+@@ -792,7 +792,7 @@
+     yes/*/*) CONFIGDIR=$configdir;;
+     */yes/*) configdir_spec=yes
+ 	case $ARCH in
+-	    win32) CONFIGDIR=$prefix/config;;
++	    win32) CONFIGDIR=$(mk_win_path $prefix/config);;
+             *) CONFIGDIR=$prefix/etc/xdg/coq;;
+ 	esac;;
+     */*/true) CONFIGDIR=$COQTOP/ide
+@@ -846,7 +846,7 @@
+     yes/*/*) EMACSLIB=$emacslib;;
+     */yes/*)
+         case $ARCH in
+-          win32) EMACSLIB=$prefix/emacs ;;
++          win32) EMACSLIB=$(mk_win_path $prefix/share/emacs/site-lisp) ;;
+           *)  EMACSLIB=$prefix/share/emacs/site-lisp ;;
+         esac ;;
+     */*/true) EMACSLIB=$COQTOP/tools/emacs ;;
+@@ -862,8 +862,8 @@
+     yes/*/*) COQDOCDIR=$coqdocdir;;
+     */yes/*)
+         case $ARCH in
+-          win32) COQDOCDIR=$prefix/latex ;;
+-          *)  COQDOCDIR=$prefix/share/emacs/site-lisp ;;
++          win32) COQDOCDIR=$(mk_win_path $prefix/share/texmf/tex/latex/misc) ;;
++          *)  COQDOCDIR=$prefix/share/texmf/tex/latex/misc ;;
+         esac ;;
+     */*/true) COQDOCDIR=$COQTOP/tools/coqdoc ;;
+     *)  printf "Where should I install Coqdoc TeX/LaTeX files [%s]? " "$coqdocdir_def"
