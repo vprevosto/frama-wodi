@@ -3,7 +3,7 @@
 # PLEASE NO "-" IN VERSION STRINGS! IT BADLY BREAKS THE GODI SERVER! [gs]
 
 MAJOR_VERSION=8.4
-MINOR_VERSION=1
+MINOR_VERSION=3
 VERSION=        ${MAJOR_VERSION}.${MINOR_VERSION}
 DVERSION=	${MAJOR_VERSION}pl${MINOR_VERSION}
 PKG=            apps-coq
@@ -29,6 +29,8 @@ COQIDE_BUILD=opt
 COQIDE_BUILD=byte
 .endif
 
+CONFIGURE_ARGS+= -debug
+
 #.if ${CONF_COQ_DOCUMENTATION} == "yes"
 #DEPENDS+= apps-hevea>=1.05:../../apps/apps-hevea
 #.else
@@ -47,10 +49,10 @@ DEPENDS+=	godi-camlp5>=5.01:../../godi/godi-camlp5
 USE_GMAKE=      yes
 
 HAS_CONFIGURE=   yes
-CONFIGURE_ARGS+= --prefix ${PREFIX}
-#CONFIGURE_ARGS+= --emacslib ${PREFIX}/share/emacs/site-lisp
-#CONFIGURE_ARGS+= --coqdocdir ${PREFIX}/share/texmf/tex/latex/misc
-#CONFIGURE_ARGS+= --libdir ${PREFIX}/lib/coq
+CONFIGURE_ARGS+= --prefix `cygpath -m ${PREFIX}`
+CONFIGURE_ARGS+= --emacslib ${PREFIX}/share/emacs/site-lisp
+CONFIGURE_ARGS+= --coqdocdir ${PREFIX}/share/texmf/tex/latex/misc
+CONFIGURE_ARGS+= --libdir `cygpath -m ${PREFIX}/lib/coq`
 
 ALL_TARGET=      world
 
